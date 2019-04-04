@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
 import { TodoDataService } from './todo-data.service';
 
@@ -9,4 +9,13 @@ describe('TodoDataService', () => {
     const service: TodoDataService = TestBed.get(TodoDataService);
     expect(service).toBeTruthy();
   });
+});
+
+describe('#getAllTodos', ()=>{
+  it('should return an empty array by default',
+    inject([TodoDataService],
+      (service: TodoDataService)=>{
+        expect(service.getAllTodos()).toEqual([]);
+      })
+  );
 });
